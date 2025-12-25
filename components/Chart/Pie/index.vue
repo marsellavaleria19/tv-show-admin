@@ -8,6 +8,8 @@
     label:string,
     value:number
   }
+
+  // --- COMPUTED ---
 const labels = computed(() =>
   props.dataChart?.length ? props.dataChart.map(item => item.label) : []
 )

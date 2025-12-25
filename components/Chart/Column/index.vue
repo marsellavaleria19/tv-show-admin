@@ -14,28 +14,24 @@ interface DataChart {
     label:string,
     value:number
   }
-const labels = computed(() =>
+
+// --- COMPUTED ---
+  const labels = computed(() =>
   props.dataChart?.length ? props.dataChart.map(item => item.label) : []
 )
 
 const values = computed(() =>
   props.dataChart?.length ? props.dataChart.map(item => item.value) : []
 )
-
-
-// Data chart
 const chartSeries = computed(() => [
   {
     name: "Total Shows",
-    // Pastikan jumlah data di sini sama dengan jumlah categories di atas
     data: values.value
   }
 ]);
-
 const chartOptions = computed(() => ({
   chart: { id: "myChart", type: "bar" },
   xaxis: {
-    // Pastikan mengambil dari chartData yang sama
     categories: labels.value || []
   },
   dataLabels: {
