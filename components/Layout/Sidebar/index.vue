@@ -13,7 +13,6 @@
           </template>
         </div>
     </div>
-    <!-- <SidebarFooter :name-user="profileName" /> -->
   </div>
 </template>
 
