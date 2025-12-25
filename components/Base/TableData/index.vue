@@ -95,8 +95,8 @@ const order = ref("");
 
 // --- EMIT ---
 const emit = defineEmits<{ (e: "sort", value: object): void,(e:'current-page',page:number):void }>();
-// --- METHOD ---
 
+// --- METHOD ---
 const sortAction = (key: string) => {
   const isSortBy = sortBy.value === key;
   if (isSortBy && order.value === "ASC") {
