@@ -7,7 +7,7 @@
           v-model="search"
         />
         <BaseCombobox
-          v-model="query.category"
+          v-model="category"
           :list-data="listCategory"
           placeholder="Pilih Kategori"
           class="w-60 ml-2"
@@ -99,15 +99,7 @@ const dataSelect = ref();
 const typeForm = ref();
 const dataDialog = ref();
 const premierDate = ref(format(new Date(), "yyyy-MM-dd"));
-const query = reactive({
-  search: "",
-  category: "",
-  date: "",
-  sortBy: "",
-  order: "" as string,
-  limit: 10,
-  page: 1,
-});
+const category = ref();
 const search = ref("");
 
 // --- STORE ---
@@ -133,32 +125,26 @@ const listCategory = computed(() => {
   ];
 });
 
-//--- WATCH ---
-watch(query, () => {
-  if (query.category || query.date) {
-    fetchData();
-  }
-});
-
 watch(premierDate, (value) => {
-  query.date = formatISO(value);
+  store.query.date = formatISO(value);
+  store.getAllDataTvShow()
 });
 
 watch(search, (value) => {
   debouncedSearch(value);
 });
 
+watch(category,(value)=>{
+  store.query.category = value
+  store.getAllDataTvShow()
+})
+
 // --- METHOD ---
-const fetchData = () => {
-  const { search, category, date, sortBy, order, limit, page } = query;
-  store.query = { search, category, date, sortBy, order, limit, page,startDate:'',endDate:'' };
-  store.getAllDataTvShow();
-};
 
 const debouncedSearch = useDebounceFn((value: string) => {
   if (value.length > 2 || value.length === 0) {
-    query.search = value.length > 2 ? value.trim() : "";
-    fetchData();
+    store.query.search = value.length > 2 ? value.trim() : "";
+    store.getAllDataTvShow()
   }
 }, 500);
 
@@ -197,18 +183,17 @@ const chooseAction = (data: any, name: string) => {
 };
 
 const sortingData = (value: any) => {
-  query.sortBy = value.key;
-  query.order = value.order;
-  if (value.key === "premier_at_format") {
-    query.sortBy = "premier_at";
+  store.query.sortBy = value.key;
+  store.query.order = value.order;
+  if (value.key === "premiered_at_format") {
+    store.query.sortBy = "premier_at";
   }
-  fetchData();
+  store.getAllDataTvShow()
 };
 
 const changeCurrentPage = (currentPage:number)=>{
-  console.log("current-page")
-  query.page = currentPage
-  fetchData()
+  store.query.page = currentPage
+  store.getAllDataTvShow()
 }
 </script>
 
