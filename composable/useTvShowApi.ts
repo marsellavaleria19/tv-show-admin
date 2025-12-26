@@ -14,6 +14,8 @@ export const usetvShowApi = () => {
           date: queryFilter?.date,
           sortBy: queryFilter?.sortBy,
           order: queryFilter?.order,
+          page: queryFilter?.page,
+          limit: queryFilter?.limit
         },
       });
     },

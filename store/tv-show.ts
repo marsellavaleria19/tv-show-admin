@@ -17,10 +17,10 @@ export const useStoreFormTvShow = defineStore("tv-show", {
     listDataTvShow: [],
     listDataTvShowSync: [],
     dataDashboard: {
-    byCategory: [] as { category: string; total: number }[],
-    byPremierDate: [] as { date: string; total: number }[],
-    totalData:0 as number
-  },
+      byCategory: [] as { category: string; total: number }[],
+      byPremierDate: [] as { date: string; total: number }[],
+      totalData: 0 as number,
+    },
     detailTvShow: {},
     query: {
       search: "",
@@ -30,11 +30,11 @@ export const useStoreFormTvShow = defineStore("tv-show", {
       order: "",
       limit: 10,
       page: 1,
-      startDate:'',
-      endDate:''
+      startDate: "",
+      endDate: "",
     },
     pagination: { totalData: 0, currentPage: 1, limit: 10 },
-    lastSyncedDate : ''
+    lastSyncedDate: "",
   }),
 
   actions: {
@@ -88,6 +88,11 @@ export const useStoreFormTvShow = defineStore("tv-show", {
         const { fetchAllDataTvShow } = usetvShowApi();
         const response = (await fetchAllDataTvShow(this.query)) as any;
         this.listDataTvShow = response.data;
+        this.pagination = {
+          limit: response.meta.limit,
+          totalData: response.meta.totalData,
+          currentPage: response.meta.currentPage,
+        };
       } catch (error) {
         console.error(error);
       }
@@ -106,7 +111,7 @@ export const useStoreFormTvShow = defineStore("tv-show", {
         console.error(error);
       }
     },
-       async getLastSync() {
+    async getLastSync() {
       try {
         const { fetchLastSync } = usetvShowApi();
         const response = (await fetchLastSync()) as any;
@@ -124,14 +129,14 @@ export const useStoreFormTvShow = defineStore("tv-show", {
         console.error(error);
       }
     },
-    async getDataDashboard(){
-      try{
-        const {fetchDashboard} = usetvShowApi();
-        const response = (await fetchDashboard(this.query)) as any
-        this.dataDashboard = response.data        
-      }catch(error){
-        console.error(error)
+    async getDataDashboard() {
+      try {
+        const { fetchDashboard } = usetvShowApi();
+        const response = (await fetchDashboard(this.query)) as any;
+        this.dataDashboard = response.data;
+      } catch (error) {
+        console.error(error);
       }
-    }
+    },
   },
 });
