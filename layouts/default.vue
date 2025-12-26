@@ -14,15 +14,20 @@
 </template>
 
 <script setup lang="ts">
-// call store
-import { storeToRefs } from "pinia";
 import { useStoreLayoutItem } from "~/store/layout-item";
 import { Toaster } from 'vue-sonner'
 import logo from '@/assets/image/user.jpg'
 
+// --- STORE ---
 const store = useStoreLayoutItem();
-const { navigations } = storeToRefs(store);
+
+// --- DATA ---
 const profile = reactive({image:'',name:''})
 profile.image = logo
 profile.name = 'Admin'
+
+// --- COMPUTED ---
+const navigations = computed(()=>{
+  return store.navigations
+})
 </script>
