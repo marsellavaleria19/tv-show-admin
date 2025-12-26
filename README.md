@@ -1,75 +1,63 @@
-# Nuxt Minimal Starter
+# TV SHOW ADMIN
+TV Show Admin is admin dashboard for managing TV show data with data visualization and content management features.
+<br><br>
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## ABOUT
+Repository Frontend - TV Show Admin
+<br><br>
 
-## Setup
+## HOW TO INSTALL
 
-Make sure to install dependencies:
+- Clone This Repo
 
-```bash
-# npm
+```[
+https://github.com/marsellavaleria19/tv-show-admin
+```
+
+- Go To Folder Repo
+
+```
+cd tv-show-admin
+```
+
+- Install Module
+
+```
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+- Copy ```.env.example``` and rename to ```.env``` then fill the data
+<table>
+  <tr>
+      <th>CONFIG</th>
+      <th>DESCRPTION</th>
+   </tr>
+   <tr>
+      <td>NUXT_BASE_URL</td>
+      <td>filled with api domain</td>
+      <td>example : https://tv-show-admin-service-staging.up.railway.app/ (my api domain) </td>
+   </tr>
+  </table>
 
-Start the development server on `http://localhost:3000`:
+- Type ``` npm run dev ``` To Start The Project
+<br><br>
 
-```bash
-# npm
-npm run dev
+## FEATURE
 
-# pnpm
-pnpm dev
+- Analytics Dashboard: Displays data summaries using interactive charts.
+- Data Management: Module for performing CRUD (Create, Read, Update, Delete) operations on TV show data.
+- Synchronize: Data synchronization feature (specify if using an external API).
+<br><br>
 
-# yarn
-yarn dev
+## TV SHOW ADMIN - BACKEND REPOSITORY
 
-# bun
-bun run dev
-```
+<https://github.com/marsellavaleria19/tv-show-admin-service>
+<br><br>
 
-## Production
+## BUILD USING
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- [CSS Tailwind](https://tailwindcss.com/docs/installation/using-vite)
+- [Nuxt JS v.3](https://nuxt.com/docs/3.x/getting-started/installation)
+- [Shadcn](https://www.shadcn-vue.com/docs/installation/nuxt)
+- [Pinia](https://pinia.vuejs.org/core-concepts/)
+- [Apex Chart](https://apexcharts.com/docs/vue-charts/)
