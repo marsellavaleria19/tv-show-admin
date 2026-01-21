@@ -1,5 +1,5 @@
 <template>
-  <Button variant="outline" class="border-[#022B55] mb-4" @click="backToPage()"
+  <Button variant="outline" class="border-[#022B55] mb-4 cursor-pointer" @click="backToPage()"
     ><ArrowLeft class="mt-1" />Kembali</Button
   >
   <PagePanel>
@@ -73,7 +73,8 @@ const router = useRouter();
 
 // --- METHOD ---
 const backToPage = () => {
-  router.push(props.link);
+  console.log(props.link)
+  router.push(props.link)
 };
 </script>
 

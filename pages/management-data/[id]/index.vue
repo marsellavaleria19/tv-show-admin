@@ -1,5 +1,5 @@
 <template>
-   <DetailPage title="Detail Acara TV" :detail="dataDetail" link="/"/>
+   <DetailPage title="Detail Acara TV" :detail="dataDetail" link="/management-data"/>
 </template>
 
 <script setup lang="ts">
